@@ -1,0 +1,86 @@
+
+*{
+
+  margin: 0;
+  padding: 0;
+
+
+
+}
+
+
+
+
+
+#navBar{
+
+     position: fixed;
+
+      height: 10vh;
+
+      width: 100vw;
+
+      z-index: 2;
+
+      background: black;
+
+}
+
+
+
+#backgroundDiv{
+
+    position: absolute;
+
+    top:0px;
+
+    left: 0px;
+
+    height: 100%;
+
+    width: 500vw;
+    
+    background: grey;
+
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: space-between;
+
+    align-items: flex-end ;
+
+}
+
+
+
+#backgroundDiv div{
+     
+    background: black;
+
+    height: 40%;
+
+    width: 10%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+}
+
+
+
+#backgroundDiv div div{
+     
+    height: 40%;
+
+    width: 30%;
+
+
+}
+
+
+
+
+

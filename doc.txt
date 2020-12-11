@@ -1,0 +1,94 @@
+
+So :
+
+The AI starts by checking what the other player has.
+
+
+So, the AI loops on each of its characters, sorted by order of distance from left. 
+
+
+So, we loop on each character of the array, and we search into the other player's stack
+
+
+------------------------------0   0--------------------------
+
+
+
+
+So : powers
+
+
+Warrior beats archer
+
+Knights beats Warrior
+
+Hyprogryph beats Warrior
+
+10 archers beats Hyprogryph
+
+no killer for Titans.
+
+
+Calculated for a combat battle. Damages depend.
+
+In battle :
+
+  Warriors damage 10 lp per second/ 20 lp archers ( 150lp)
+  Archers : from long range (1 point/second against warriors) , from close range : 5 point per second (100)
+  Knights : 50 points per second()
+  Hyprogryphs : long range (fire : 100 point/second ); short range : 30 points/second.
+
+
+ What's good having archers : drive Hyprogryphs not to fly and attack the castle.
+
+
+3 maximal Hyprogryphs.
+
+
+Time of building : 
+
+10s.
+
+10s.
+
+30s.
+
+50s.
+
+
+
+You can add a next task, delete a task to your druid.
+
+
+function search(){
+
+
+
+  //check if matches with current opponents. If not, don't do anything with the rest of the players (they wil be useful for the next attack).
+
+
+
+          //So, first, two arrays :
+           
+          //On
+
+
+  //build players to match the players.
+
+
+  //Behaviour? For all the players on the board, attack the closest matching player.
+
+
+  //when no players not matched, if the middle is available, send the druid to enter the dark dimension , and collect dark energy.
+
+
+
+
+
+}
+
+
+
+
+
+

@@ -1,94 +1,32 @@
+The opponent builds some forces.
+The AI builds troops to beat it.
+Then, the AI always have better troops. 
+Then, anytime the opponent brings out troops you, you bring out troops to match its power.
+And, if it sends new troops as support, you do the same. When a war is won, go back. if not, continue.
+To make sure not to lose a war, you only send an army with 20 to 50% more power.
+Then, whenever you have enough resource : you build an army which will damage it.
+Once we launch war, we make sure to have army he won't match. Simply : make sure that the opponenent won't have time to recover before death.
+Damage the castle without taking damages.
+Always better team (because of adaptation to its behaviour).
 
-So :
+So, either : defend, or damage the castle (sometimes, when doing so : send druid to collect black stones)/
 
-The AI starts by checking what the other player has.
+So : wait. 
 
+Build. Anytime an opponent builds something : build the opposite.
 
-So, the AI loops on each of its characters, sorted by order of distance from left. 
+Then, you have a bigger army.
 
+So, when the opponent attacks, defend and beat what it brings.
 
-So, we loop on each character of the array, and we search into the other player's stack
+Whenever you know that the opponent won't be ab
 
+0/0 , good. as long as the opponent doesn't have an army either , no threat.
 
-------------------------------0   0--------------------------
+So, whenever you're stronger, attack. The opponent will send troops, but will be destroyed, as he should send all his troops. (which won't be enough).
 
+While attacking : same, we build at the same rate, and adapt to him.
 
+So, in a nutshell : 
 
-
-So : powers
-
-
-Warrior beats archer
-
-Knights beats Warrior
-
-Hyprogryph beats Warrior
-
-10 archers beats Hyprogryph
-
-no killer for Titans.
-
-
-Calculated for a combat battle. Damages depend.
-
-In battle :
-
-  Warriors damage 10 lp per second/ 20 lp archers ( 150lp)
-  Archers : from long range (1 point/second against warriors) , from close range : 5 point per second (100)
-  Knights : 50 points per second()
-  Hyprogryphs : long range (fire : 100 point/second ); short range : 30 points/second.
-
-
- What's good having archers : drive Hyprogryphs not to fly and attack the castle.
-
-
-3 maximal Hyprogryphs.
-
-
-Time of building : 
-
-10s.
-
-10s.
-
-30s.
-
-50s.
-
-
-
-You can add a next task, delete a task to your druid.
-
-
-function search(){
-
-
-
-  //check if matches with current opponents. If not, don't do anything with the rest of the players (they wil be useful for the next attack).
-
-
-
-          //So, first, two arrays :
-           
-          //On
-
-
-  //build players to match the players.
-
-
-  //Behaviour? For all the players on the board, attack the closest matching player.
-
-
-  //when no players not matched, if the middle is available, send the druid to enter the dark dimension , and collect dark energy.
-
-
-
-
-
-}
-
-
-
-
-
-
+build more destructive power, create a battle, destroy its army. The time the opponent will create enough troops to beat the army, the opponent will be at 0, castle beat and our new army being built (we start to interest in its pieces again, once the war is over, as we think they will all be consumed there)

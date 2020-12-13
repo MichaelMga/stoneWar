@@ -28,20 +28,20 @@ function buildInitialArmies(){
     let players = [AI, human];
 
 
-    for(playerIndex = 0; playerIndex < players.length; playerIndex++){  
+    for(playerIndex = 0; playerIndex < 2; playerIndex++){  
 
 
       let player = players[playerIndex];
 
       //looper sur les deux dernieres sections
       
-      for(i=3; i < 5;i++){
+      for(i=2; i < 4;i++){
 
         for(n=0; n < 5; n++){
 
           let sectionType = charactersArray[i];
  
-          let newCharacter = new Character(player, sectionType);
+          let newCharacter = new Character(player, sectionType, intuitive);
   
           player.army[i].push(newCharacter);
   
@@ -53,8 +53,8 @@ function buildInitialArmies(){
 
         //Créer le druide de chaque joueur
 
-        let newDruid = new Character(player,druid);
-        player.army[5].push(newDruid);
+        let newDruid = new Character(player,druid, intuitive);
+        player.army[4].push(newDruid);
         addCharacterOnGui(player, newDruid);
 
 
@@ -89,12 +89,9 @@ function buildInitialArmies(){
           //take one archer, and one warrior and insert it into the array.
 
         }
-
-
-
         
-        
-   }
+    }
+    
 
 }
 
@@ -113,7 +110,6 @@ alert ('you didnt select any character');
 
 
 let stoneLeft = event.target.parentElement.offsetLeft;
-
 
 let initialPositionLeft = selectCharacter.offsetLeft;
 
@@ -163,7 +159,8 @@ function addCharacterOnGui(player, character){
     let a = document.createElement('a');
     a.setAttribute('onclick' , 'selectCharacter(event)');
     let newCharacter = document.createElement('div');
-    newCharacter.setAttribute("class" , player.name + '_' + character.type.name);
+    newCharacter.setAttribute("class" , character.type.name + ' ' + player.name + '_' + character.type.name);
+
     newCharacter.innerHTML = character.type.name + character.id;
 
     a.append(newCharacter);

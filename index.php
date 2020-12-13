@@ -6,15 +6,16 @@
 
 
 
-
- <div id='background_div'>
+<div id='backgroundWrap'> 
+     
+   <div id='background_div'>
 
 
       <div id='land_div1'>
 
            <div class='bluePortal' style='background: blue'><button id='mybutton' onclick='harvest(event)' style='position: relative; z-index: 2' >harvest</button></div>
-           <div id='redPortal' class='redPortal' style='background: red'><button id='mybutton' onclick='harvest(event)' style='position: relative; z-index: 2' >harvest</button></div>
-           <div id='castle' style='background: purple; height: 80%'></div>
+           <div class='redPortal' class='redPortal' style='background: red'><button id='mybutton' onclick='harvest(event)' style='position: relative; z-index: 2' >harvest</button></div>
+           <div class='castle' style='background: purple; height: 80%'></div>
       
       </div>
 
@@ -30,12 +31,129 @@
       <div id='land_div2'>
             
            <div id='castle' style='background: purple; height: 80%'></div>
-           <div class='redPortal' style='background: red'><button id='mybutton' onclick='harvest(event)' style='position: relative; z-index: 2' >harvest</button></div>
-           <div class='bluePortal' style='background: blue'><button id='mybutton' onclick='harvest(event)' style='position: relative; z-index: 2' >harvest</button></div>
+           <div class='redPortal' id='AIRedStone' style='background: red'><button id='mybutton' onclick='harvest(event)' style='position: relative; z-index: 2' >harvest</button></div>
+           <div class='bluePortal' id='AIBlueStone' style='background: blue'><button id='mybutton' onclick='harvest(event)' style='position: relative; z-index: 2' >harvest</button></div>
 
       </div>
  
- </div>
+  </div>
+
+
+
+  <div id='groundDiv'>
+
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+       <a onclick='move(event)' style='cursor: pointer'><div></div></a>
+
+       
+      
+  </div>
+
+
+
+</div>
+
+
+
+
 
 
 

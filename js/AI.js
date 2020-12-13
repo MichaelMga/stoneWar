@@ -15,13 +15,13 @@ function buildInitialArmies(){
 
       //looper sur les deux dernieres sections
       
-      for(i=3; i < 5;i++){
+      for(i=2; i < 4;i++){
 
         for(n=0; n < 5; n++){
 
           let sectionType = charactersArray[i];
  
-          let newCharacter = new Character(player, sectionType);
+          let newCharacter = new Character(player, sectionType, intuitive);
   
           player.army[i].push(newCharacter);
   
@@ -33,7 +33,7 @@ function buildInitialArmies(){
 
         //Créer le druide de chaque joueur
 
-        let newDruid = new Character(player,druid);
+        let newDruid = new Character(player,druid, intuitive);
         player.army[5].push(newDruid);
         addCharacterOnGui(player, newDruid);
 
@@ -69,10 +69,7 @@ function buildInitialArmies(){
           //take one archer, and one warrior and insert it into the array.
 
         }
-
-
-
-        
+   
         
    }
 

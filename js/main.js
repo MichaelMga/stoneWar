@@ -27,21 +27,19 @@ function buildInitialArmies(){
 
     let players = [AI, human];
 
-
     for(playerIndex = 0; playerIndex < 2; playerIndex++){  
-
 
       let player = players[playerIndex];
 
       //looper sur les deux dernieres sections
       
-      for(i=2; i < 4;i++){
+      for(i=1; i < 4;i++){
 
         for(n=0; n < 5; n++){
 
           let sectionType = charactersArray[i];
  
-          let newCharacter = new Character(player, sectionType, intuitive);
+          let newCharacter = new Character(player, sectionType);
   
           player.army[i].push(newCharacter);
   
@@ -53,44 +51,41 @@ function buildInitialArmies(){
 
         //Créer le druide de chaque joueur
 
-        let newDruid = new Character(player,druid, intuitive);
-        player.army[4].push(newDruid);
+        let newDruid = new Character(player,druid);
+        player.army[druid.index].push(newDruid);
         addCharacterOnGui(player, newDruid);
-
-
-
-
 
 
           if(player == AI){
 
-            let warriors = AI.army[warrior.index];
-
-            let archers = AI.army[archer.index];
 
             //select the last element created in the array, and declare it as a druid killer
 
-            let warriorDruidKiller = warriors[warriors.length - 1]
+            let knightDruidKiller = new Character(AI, knight);
             
-             AI.druidsKillers.push(warriorDruidKiller);
+             AI.druidKillers.push(knightDruidKiller);
+
+             addCharacterOnGui(AI, knightDruidKiller);
+
 
              //after that, remove it from the initial array
-
-             AI.army[warrior.index].pop();
-
              
-            let archerDruidKiller = archers[archers.length - 1];
-
-            AI.druidsKillers.push(archerDruidKiller);
-
-            AI.army[archer.index].pop();
-
 
           //take one archer, and one warrior and insert it into the array.
 
         }
         
     }
+
+
+
+
+    humanDruid = human.army[druid.index][0];
+
+
+    AIDruid = AI.army[druid.index][0];
+
+
     
 
 }
@@ -109,18 +104,15 @@ alert ('you didnt select any character');
 } else {
 
 
-let stoneLeft = event.target.parentElement.offsetLeft;
+  let stoneLeft = event.target.parentElement.offsetLeft;
 
-let initialPositionLeft = selectCharacter.offsetLeft;
-
-
+  let initialPositionLeft = selectCharacter.offsetLeft;
 
 
 
-console.log('the harvester is moving...');
+   console.log('the harvester is moving...');
 
-
-moveAndHarvest(selectedCharacter, stoneLeft);
+   moveAndHarvest(selectedCharacter, stoneLeft);
 
 
 //Launch the Harvest timeout. Once the harvester is done harvesting , move the character back
@@ -159,7 +151,19 @@ function addCharacterOnGui(player, character){
     let a = document.createElement('a');
     a.setAttribute('onclick' , 'selectCharacter(event)');
     let newCharacter = document.createElement('div');
+    
     newCharacter.setAttribute("class" , character.type.name + ' ' + player.name + '_' + character.type.name);
+    
+     if(character.type != druid){
+
+      newCharacter.setAttribute("id" , player.name + '_' + character.type.name + '_' + character.id);
+         
+     } else {
+
+      newCharacter.setAttribute("id" ,  player.name + '_' + character.type.name);
+         
+     }
+
 
     newCharacter.innerHTML = character.type.name + character.id;
 
@@ -181,12 +185,13 @@ function moveAndHarvest(character, destinationLeft){
    if( characterLeft > destinationLeft ){
 
     moveInterval = setInterval(function(){ 
-    console.log('movement...');
+
     characterLeft -= 3;
     character.style.left = characterLeft + 'px';
     console.log(characterLeft);
 
- if( (character.offsetLeft - destinationLeft) < 50){         
+    
+    if( (character.offsetLeft - destinationLeft) < 50){         
        character.style.opacity = 0;
 
       setTimeout(function(){
@@ -216,23 +221,22 @@ moveInterval = setInterval(
 
 function(){ 
 
-console.log('movement...');
 
 
 if(characterLeft > destinationLeft/2){
 
-  if(humanDruidAttacked == false){    
+  if(druidKillersComing == false){  
+    
+     druidKillersComing = true;
+     launchDruidAssault();
      
-    humanDruidAttacked = true;
-     
-    alert('la tour noir est en alerte!! une terrible attaque est sur le point de s abattre sur therebor');
-
-
-    launchDruidAssault();
-
-
   }
 
+
+  if(humanDruid.attacked == true ){
+
+    clearInterval(moveInterval);
+  }
 
 
 }
@@ -246,7 +250,6 @@ if(characterLeft > destinationLeft/2){
  character.style.left = characterLeft + 'px';
 
 
- console.log(characterLeft);
 
 
  if( (character.offsetLeft - destinationLeft) > 50){
@@ -297,20 +300,28 @@ function standingArmyAttack(target){
 //move army and attack the druid
 
 
-
 //attack an army
 
 
 //attack a castle
 
 
-
 }
 
 
+function getCharacterDomElement(player, character){
 
+     if(character == druid){
 
+        return document.getElementById(player.name + "_" + character.type.name );
 
+     } else {
+      
+       return document.getElementById(player.name + "_" + character.type.name + "_" + character.id );
+
+     }
+
+}
 
 
 

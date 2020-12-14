@@ -15,7 +15,7 @@
 
     let character;
 
-    let humanDruid = document.getElementById('human_druid');
+    let humanDruidDOM = document.getElementById('human_druid');
     
 
     for(dkIndex = 0; dkIndex < 1; dkIndex++){
@@ -27,24 +27,29 @@
       //the character right value needs to go down until it's close to this value : then, it disappears
       let moveInterval;
    
-      if( characterLeft > humanDruid.offsetLeft ){
+      if( characterLeft > humanDruidDOM.offsetLeft ){
    
-        alert('go!!');
          moveInterval = setInterval(function(){ 
-         console.log('movement...');
-         characterLeft -= 3;
+         characterLeft -= 15;
          character.style.left = characterLeft + 'px';
-         console.log(characterLeft);
    
-      if( (character.offsetLeft - humanDruid.offsetLeft) < 50){   
+      if( (character.offsetLeft - humanDruidDOM.offsetLeft) < 50){   
 
+          alert('the druid killers are attacking the druid!!!');
 
-        alert('the druid killers are attacking the druid!!!');
+          humanDruid.attacked = true;
 
+           let attackInterval = setInterval(
+            
+            function(){
+              
+              attack(AI.druidKillers[0] , humanDruid , attackInterval)}, 
+            
+              1000);
+              
+             clearInterval(moveInterval);
    
-          clearInterval(moveInterval);
-   
-     }
+        }
    
     } , 20 );
    
@@ -60,7 +65,6 @@
    
    function(){ 
    
-   console.log('movement...');
 
   
     characterLeft += 3;
@@ -68,10 +72,9 @@
     character.style.left = characterLeft + 'px';
    
    
-    console.log(characterLeft);
    
    
-    if( (character.offsetLeft - humanDruid.offsetLeft) > 50){
+    if( (character.offsetLeft - humanDruidDOM.offsetLeft) > 50){
             
           character.style.opacity = 0;
        
@@ -105,4 +108,28 @@
 
 }
 
+var initialVictimLifePoints;
 
+
+function attack(agressor, victim , attackInterval){
+
+  initialVictimLifePoints = victim.lifePoints;
+ 
+  if( victim.type == druid){     
+    
+    victim.lifePoints -= 20;
+  
+  }
+
+  if(victim.lifePoints <= 0){
+
+
+    alert('the ' + victim.type.name + ' is dead');
+
+    clearInterval(attackInterval);
+
+  }
+
+
+  alert("a " + agressor.type.name + " just attacked a " + victim.type.name + "!" + (initialVictimLifePoints - victim.lifePoints) + " of damage inflicted!" );
+}

@@ -22,7 +22,12 @@
       
 
       <div id='blackStone' style='width: 5%'>
+
              <button id='mybutton' onclick='harvest(event)' style='position: relative; z-index: 2' >harvest</button>
+             <button style='position:absolute; top: 50%; left: 50%; z-index: 4' onclick='build(human, new Character(human, soldier) )'>Build soldiers</button>
+             <button style='position:absolute; top: 50%; left: 55%; z-index: 4' onclick='build(human, new Character(human, berseker) )'>Build bersekers</button>
+             <button style='position:absolute; top: 50%; left: 60%; z-index: 4' onclick='build(human, new Character(human, knight) )'>Build knights</button>
+
       </div>
 
     

@@ -1,0 +1,27 @@
+
+archer/bersekers/warriors       archers/bersekers/warriors;
+
+
+simple : fights happen at close range. Yes.
+
+
+move if needed.
+
+So, when a character attacks its prey : 1/5 lp/s.
+
+
+when any character attacks a titan, it loses 1/20.
+
+The titan makes 50% damage/s;
+
+So, you need more than 10 armies (any character), or a titan, to beat it.
+
+
+To kill a druid : 1/10 /s pour une faction;
+
+
+useless to leave, because you're followed, but stops attacking.
+
+So, the druid would take 1Os to get killed.
+
+The druid is sent if it's protected by an army higher than the other and that the area is cleared.

@@ -13,6 +13,14 @@ var stones = [redStone, blueStone, darkStone];
 
 var AIdruidHarvesting = false;
 
+var AIDruid;
+
+var humanDruid;
+
+var intuitive = 'intuitive';
+
+var parallel = 'parallel';
+
 
 //queue used to put the players when they couldn't be built because of resources shortage
 
@@ -26,3 +34,5 @@ var parallel;
 
 var intuitive;
 
+
+var druidKillersComing = false;

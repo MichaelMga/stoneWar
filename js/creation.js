@@ -1,6 +1,8 @@
 
 function build(player, character){
 
+    alert(player.name + " launched the construction of a " + character.type.name)
+
 
     //First, check if you have the available resources to build this character 
 
@@ -28,8 +30,8 @@ function build(player, character){
         
         if(player == human){
 
-            launchParallelBuilding();
-           
+            launchParallelBuilding();  
+            
         }
 
 
@@ -54,7 +56,7 @@ function processNextElementInBuildQueue(player){
 
         //nothing to build => stop the recursive process
          
-        break;
+        return;
 
 
      } else {
@@ -103,6 +105,9 @@ function launchParallelBuilding(character){
          //for the length of the queue, starting from the bottom 
 
          let newCharacter = new Character(character.predator);
+        
+         newCharacter.buildingType = parallel;
+
          AI.buildingQueue.push(newCharacter);
 
 
@@ -112,11 +117,11 @@ function launchParallelBuilding(character){
          //knowing that the last index currently stores the new player
 
           
-           for(i=AI.buildingQueue.length-1; i > 0 ; i--){
+           for(i=AI.buildingQueue.length-1; i >= 0 ; i--){
 
              let queue = AI.buildingQueue;
 
-               if(queue[i-1].creationType != parallel){
+               if(queue[i-1].buildingType != parallel){
 
                    //swap elements
 
@@ -126,7 +131,7 @@ function launchParallelBuilding(character){
 
                } else {
 
-                  //keep the element there
+                  //stop the loop, you found where to insert the element
 
                   break;
                }
@@ -211,18 +216,3 @@ function availableResources(player, character){
  }
 
 
-
-
- 
- launchAiReflection(){
-      
-    //when the other player builds, those elements are actually pushed at the top of the queue (it's actually a priority queue)
-
-    //So, the elements are actually enqueued, and bubble up, until there is another parallel element
-
-
-
-
-
- }
- 

@@ -30,7 +30,7 @@
       if( characterLeft > humanDruidDOM.offsetLeft ){
    
          moveInterval = setInterval(function(){ 
-         characterLeft -= 15;
+         characterLeft -= 20;
          character.style.left = characterLeft + 'px';
    
       if( (character.offsetLeft - humanDruidDOM.offsetLeft) < 50){   
@@ -128,8 +128,56 @@ function attack(agressor, victim , attackInterval){
 
     clearInterval(attackInterval);
 
+    deadCharacter(victim);
+
+  }
+
+  alert("a " + agressor.type.name + " just attacked a " + victim.type.name + "!" + (initialVictimLifePoints - victim.lifePoints) + " of damage inflicted!" );
+}
+
+
+function deadCharacter(character){
+
+  //remove this character from its array (hash id)
+
+  //To target the element as efficiently as possible
+
+  let found = false;
+
+  let player = character.player;
+
+  for(i=0 ; i < character.player.army[character.type.index].length ; i++){
+
+    let checkedChar = character.player.army[character.type.index][i]
+
+    if(checkedChar == character){
+
+     let characterDOM = getCharacterDomElement(player, character);
+
+
+      document.getElementById(player.name + '_div').removeChild(characterDOM.parentElement);
+      
+
+      character.player.army[character.type.index].splice(i,1);
+
+      found = true;
+
+      return;
+
+    }
+
+
+    if(found == false){
+
+      console.log('probleme lors de la suppression d un joueur...le joueur na pas été trouvé');
+
+    }
+
+
+
+
   }
 
 
-  alert("a " + agressor.type.name + " just attacked a " + victim.type.name + "!" + (initialVictimLifePoints - victim.lifePoints) + " of damage inflicted!" );
+
 }

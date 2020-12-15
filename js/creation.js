@@ -1,25 +1,24 @@
 
 function build(player, character){
 
-    alert(player.name + " launched the construction of a " + character.type.name)
-
+    alert(player.name + " launched the construction of a " + character.name);
 
     //First, check if you have the available resources to build this character 
-
 
     if(availableResources(player,character) == false){
 
        alert('vous n avez pas assez de resources pour construire ce personnage!');
 
-
     } else {
 
+        let newCharacter = new Character(player, character);
 
-        player.buildingQueue.push(character);
+
+        player.buildingQueue.push(newCharacter);
             
 
         if(player.buildingQueue.length == 0){
-    
+
             processNextElementInBuildQueue(player);
     
         }
@@ -30,8 +29,8 @@ function build(player, character){
         
         if(player == human){
 
-            launchParallelBuilding();  
-            
+            launchParallelBuilding(character);  
+
         }
 
 
@@ -49,33 +48,45 @@ function build(player, character){
 
 
 
-function processNextElementInBuildQueue(player){
-
-
-     if(processElementInBuildingQueue.length == 0){
-
-        //nothing to build => stop the recursive process
-         
-        return;
-
-
-     } else {
-
-        let buildingTime = player.buildingQueue[0].buildingTime;
-
+function processNextElementInBuildQueue(player){  
+    
+    
+    
+  if(player.buildingQueue.length == 0){
    
-        setTimeout(function(){
+    //nothing to build => stop the recursive process
+    return;
 
-            //remove the first element of the queue
+    } else{
+
+        if(availableResources(AI, character.predator) == false){
+            //send the druid fill stoneStocks
+            moveAndFillStocks();
+    
+            //then, process the next element
+      
+            processNextElementInBuildQueue(player);
            
-           //launch the process of the next element
+        } else { 
+    
+               let buildingTime = player.buildingQueue[0].buildingTime;
+          
+               setTimeout(function(){
+       
+                   //remove the first element of the queue
+                  
+                  //launch the process of the next element
+       
+                player.buildingQueue(player);
+       
 
-            processNextElementInBuildingQueue(player);
+            }, buildingTime);
+            
+        }
+        
+        
+    }
 
-
-        }, buildingTime);
-   
-     }
 
 }
 
@@ -84,25 +95,10 @@ function processNextElementInBuildQueue(player){
 
 function launchParallelBuilding(character){
 
-    if(availableResources(AI, character.predator) == true){
 
-       //add this character to the "to do queue"
+       //bubble up (priority queue)
 
-
-       toDoQueue.push( new Character(character.predator));
-    
-       //send the druid fill stoneStocks
-
-       fillStocks();
-
-    } else {
-
-        //IF THE CHARACTER IS TITAN, OR HYPOGRIFF, we actually multiply the operation
-
-
-         //bubble up (priority queue)
-
-         //for the length of the queue, starting from the bottom 
+      //for the length of the queue, starting from the bottom 
 
          let newCharacter = new Character(character.predator);
         
@@ -137,8 +133,8 @@ function launchParallelBuilding(character){
                }
 
            } 
-        }
-    }
+
+  }
 
 
 function availableResources(player, character){
@@ -150,6 +146,8 @@ function availableResources(player, character){
        if( player.stones[i].length < character.recipe[i].length){
            
            availableResources = false;
+
+           alert('vous n avez pas les ressources pour construire ce charactere' );
 
            break;
 
@@ -172,47 +170,51 @@ function availableResources(player, character){
 
 
  function moveAndFillStocks(){
-
-    collectIterationIndex = 5;
-
-    launchStoneCollectIteration();
+       
+     AI.stones[0] += 50;
+     AI.stones[1] += 50;
 
  }
 
 
- function launchStoneCollectIteration(){
+
+ function launchStoneCollectIteration(stone){
 
     //collect 10 red stones , collect 10 blue stones
 
-    moveAndHarvest(player, stone.left);
-
+    collectIterationIndex--;
+   
+    moveAndHarvest( AIDruidDOM , stone.offsetLeft);
 
     //give the time to the druid to perform the current stone collection
     
     let iterationInterval;
 
+    
     iterationInterval = setInterval(function(){  
 
-      if( AIdruidHarvesting != true){   
+      if( AIDruidHarvesting != true){   
+
+        clearInterval(iterationInterval);
+
           
-        if(collectIterationIndex != 0){
+        if(collectIterationIndex != 1){
 
            if(collectIterationIndex > 5){
 
-            launchStoneCollectIteration(redStone);
+            launchStoneCollectIteration(AIBlueStone);
 
            } else {
 
-              launchStoneCollectIteration(blueStone);
+             launchStoneCollectIteration(AIRedStone);
 
             }
-        } else {
 
-         //else , end of the iteration
+        }
 
-      }
     }   
-  }, 500);
- }
+  }, 1000);
+ 
+}
 
 

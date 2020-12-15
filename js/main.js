@@ -10,7 +10,25 @@ window.onload = function(){
   
   buildInitialArmies();
 
+
+  setTimeout(function(){
+     
+    checkForArmySuperiority();
+
+    buildMassiveArmy();
+
+   }, 3000)
+
+  setTimeout(function(){     
+    
+    checkForArmySuperiority();
+
+
+  }, 10000);
+
+
 }
+
 
 
 
@@ -84,7 +102,6 @@ function buildInitialArmies(){
 
 
     AIDruid = AI.army[druid.index][0];
-
 
     
 
@@ -176,13 +193,15 @@ function addCharacterOnGui(player, character){
 
 
 
+
 function moveAndHarvest(character, destinationLeft){
 
-    let characterLeft = character.offsetLeft;
-   //the character right value needs to go down until it's close to this value : then, it disappears
-   let moveInterval;
+  let characterLeft = character.offsetLeft;
+ //the character right value needs to go down until it's close to this value : then, it disappears
+ let moveInterval;
 
-   if( characterLeft > destinationLeft ){
+ 
+ if( characterLeft > destinationLeft ){
 
     moveInterval = setInterval(function(){ 
 
@@ -190,26 +209,23 @@ function moveAndHarvest(character, destinationLeft){
     character.style.left = characterLeft + 'px';
     console.log(characterLeft);
 
+  
+  if( (character.offsetLeft - destinationLeft) < 50){         
+
+    character.style.opacity = 0;
+
+    setTimeout(function(){
     
-    if( (character.offsetLeft - destinationLeft) < 50){         
-       character.style.opacity = 0;
+      alert('you collected 10 stones');
+      stoneCollected();
+      character.style.opacity = 1;
 
-      setTimeout(function(){
+      }, 2000);
+    
+     clearInterval(moveInterval);
+   }
 
-        alert('you collected 10 stones');
-
-        stoneCollected();
-
-        character.style.opacity = 1;
-
-
-        }, 2000);
-
-       clearInterval(moveInterval);
-
- }
-
-} , 20 );
+  } , 20 );
 
 
 
@@ -225,18 +241,18 @@ function(){
 
 if(characterLeft > destinationLeft/2){
 
-  if(druidKillersComing == false){  
-    
-     druidKillersComing = true;
-     launchDruidAssault();
-     
-  }
+if(druidKillersComing == false){  
+  
+   druidKillersComing = true;
+   launchDruidAssault();
+   
+}
 
 
-  if(humanDruid.attacked == true ){
+if(humanDruid.attacked == true ){
 
-    clearInterval(moveInterval);
-  }
+  clearInterval(moveInterval);
+}
 
 
 }
@@ -245,38 +261,42 @@ if(characterLeft > destinationLeft/2){
 
 
 
- characterLeft += 3;
+characterLeft += 3;
 
- character.style.left = characterLeft + 'px';
-
-
+character.style.left = characterLeft + 'px';
 
 
- if( (character.offsetLeft - destinationLeft) > 50){
-         
-       character.style.opacity = 0;
-    
+
+
+if( (character.offsetLeft - destinationLeft) > 50){
+       
+     character.style.opacity = 0;
+  
       setTimeout(function(){
 
-        alert('the harvester collected 3 stones');
+       alert('the harvester collected 3 stones');
 
-        stoneCollected();
+       stoneCollected();
 
-        character.style.opacity = 1;
+       character.style.opacity = 1;
 
 
-        }, 2000);
+       }, 2000);
 
-       clearInterval(moveInterval);
+      clearInterval(moveInterval);
 
- }
+     }
 
-} , 20 );
+    } , 20 );
 
+  }
 
 }
 
-}
+
+
+
+
 
 
 
@@ -311,7 +331,7 @@ function standingArmyAttack(target){
 
 function getCharacterDomElement(player, character){
 
-     if(character == druid){
+     if(character.type == druid){
 
         return document.getElementById(player.name + "_" + character.type.name );
 
@@ -325,245 +345,160 @@ function getCharacterDomElement(player, character){
 
 
 
-/*
 
 
 
 
 
-function thinkAndBuild(){
 
 
-for(i=0; i < humanPlayer.army.length; i++){
 
- let humanSection = humanPlayer.army[i];
 
- let humanSectionPredator = humanSection[0].prey;
+//BUILD HUMAN ARMY (dev)
 
- let AIsection = AI.army[humanSectionPredator.index];
-     
- if(AIsection.length < humanSection.length){
 
-     //build the difference (add the difference to the queue)
-     launchCharacterBuilding(AI, character, number);
 
- }
 
-}
 
+let humanCharacter;
 
-//after that, if there still are players in the array : build a char I want to postulate and build my RPG all night, and postulate (this is going to be absolutely incredible, knowing it will allow me to build all the PHP skills I want, all the data structures skills I want....I will push it so far man. It's gonna be a real video game.)
+//3 knights
 
+humanCharacter = new Character(human, knight);
+human.army[1].push(humanCharacter);
+addCharacterOnGui(human , humanCharacter);
 
-//that'the issue with separated arrays : I can't directly check the length of an array. For that
+humanCharacter = new Character(human, knight);
+human.army[1].push(humanCharacter);
+addCharacterOnGui(human , humanCharacter);
 
 
+humanCharacter = new Character(human, knight);
+human.army[1].push(humanCharacter);
+addCharacterOnGui(human , humanCharacter);
 
-}
 
+//3 soldiers
 
 
+humanCharacter = new Character(human, soldier);
+human.army[1].push(humanCharacter);
+addCharacterOnGui(human , humanCharacter);
 
+humanCharacter = new Character(human, soldier);
+human.army[1].push(humanCharacter);
+addCharacterOnGui(human , humanCharacter);
 
 
+humanCharacter = new Character(human, soldier);
+human.army[1].push(humanCharacter);
+addCharacterOnGui(human , humanCharacter);
 
-function AIWarThinking(character){
-   
-//any time a player is built, or any time a player comes out from a battle : is there a prey available? If not, join the army.
 
-//So, the strategy of the AI, if you can clear, clear. Whenever you are, build an army. That way, you don't let the opponent make a strategy.
+//3 bersekers
 
 
+humanCharacter = new Character(human, berseker);
+human.army[1].push(humanCharacter);
+addCharacterOnGui(human , humanCharacter);
 
-for(i=0; i < inactiveOpponentsArray[character.prey.index].length ; i++){
+humanCharacter = new Character(human, berseker);
+human.army[1].push(humanCharacter);
+addCharacterOnGui(human , humanCharacter);
 
- //check if there are any preys (this array is stored by distance from the border)
-  let section = inactiveOpponentsArray[character.prey.index][i];
+humanCharacter = new Character(human, berseker);
+human.army[1].push(humanCharacter);
+addCharacterOnGui(human , humanCharacter);
 
-    if(section.length != 0){
 
-       //attack the character
 
-       launchCharacterAttack(character, section[0]);
 
-       //delete the opponent from the inactive array
 
-       section.splice(0,1);
 
-    }
 
-}
 
-}
 
 
 
 
-function launchCharacterBuilding(player, character, number){
 
 
-let newCharacter = new Character(character);
 
 
-//add the player to the queue
 
-//if there are no element launch the function process head of queue
 
 
-if(player.queue.length == 0){
 
-queue.push(newCharacter);
 
-processHeadofQueue(player);
 
-} 
+function buildMassiveArmy(){
+  let AICharacter;
+  
+  //3 knights
+  
+  AICharacter = new Character(AI, knight);
+  AI.army[1].push(humanCharacter);
+  addCharacterOnGui(AI , AICharacter);
 
+  
+  AICharacter = new Character(AI, knight);
+  AI.army[1].push(humanCharacter);
+  addCharacterOnGui(AI , AICharacter);
 
-}
-
-
-
-function processHeadofQueue(player){
-
-//check head of queue.
-
-if(player.queue.length == 0){
-
-
-//if the queue is empty, the AI doesn't feel the need to build. Then : send the druid to collect dark matter.
-
-lookForDarkMatter();
-
-
-return;
-
-} else {
-
-
-setTimeout(() => {
-
-
-let character = player.queue[0];
-
-player.queue.splice(0,1);
-
-processHeadofQueue(player);
-
-}, character.creationTime);
-
-
-}
-
-
-}
-
-
-
-
-
-
-
-
-function launchlongRangeAttack(attacker, attacked){
-
-    
-moveCharacter( ){
-
- //move the character up to the other player. Anytime the other player moves, this function will be updated.
-
- //Actually, move doesn't matter at all, as what matters is the css.
-
- //when you're close enough : attack. Meaning 
-
- setInterval(() => {
-
-    //check if still at range, and still attacked by the other opponent
-
-    //if not attacked, move back and attack
-
-    //if attacked, launchclose range attack
-
-
-    attack();
-
-    
- }, interval);
-
-
-}
-
-}
-
-
-
-function shortRangeAttack(attacker, attacked){
-
-
-}
-
-
-
-function attack(attacker, attacked){
-
-attackAnimation();
-
-}
-
-
-
-function launchArmyAttack(){
-
-//In this configuration, characters are harder to hurt and are stronger
-
-
-
-}
-
-
-
-
-function stopAttack(){
-
-
-
-}
-
-
-
-
-function lookForDarkMatter(){
-
-
-moveCharacter(druid, blackPortal){
-
-//once the character is there : harvest
-
-//if attacked, destroy.
-
-//If the other player has a druid moving towards the black stone, we send an army to kill it.
-
-//Druids can't cope with 5 archers, and 5 warriors (solid, but not that much)
-
-//If the druid is dead, game Over. Druids are very slow. So, when you send . When you're attacked, you can't go "vous etes attackés!!"
-
-
-
-
-//So, once the druid advance => priority : kill him. Druids are strong, but very slow.
-
-
-//You can then improve your castle. The AI does it if : the area is cleaned, and the other castle is attacked.
-
-//Druids need to be protected. So, priority, when a druid is moving, group attack.
-
-
-//send your 5 strongerst characters to kill it , declare a battle (knowing other players will t). Then, loop on the board again
-
-
-//When there are no players to attack : attack.
-
-}
-
+  
+  AICharacter = new Character(AI, knight);
+  AI.army[1].push(humanCharacter);
+  addCharacterOnGui(AI , AICharacter);
+
+  
+  AICharacter = new Character(AI, knight);
+  AI.army[1].push(humanCharacter);
+  addCharacterOnGui(AI , AICharacter);
+  
+  
+  
+  //3 soldiers
+  
+  
+  AICharacter = new Character(AI , soldier);
+  AI.army[1].push(AICharacter);
+  addCharacterOnGui(AI , AICharacter);
+  
+  AICharacter = new Character(AI , soldier);
+  AI.army[1].push(AICharacter);
+  addCharacterOnGui(AI , AICharacter);
+  
+  
+  AICharacter = new Character(AI , soldier);
+  AI.army[1].push(AICharacter);
+  addCharacterOnGui(AI , AICharacter);
+  
+  AICharacter = new Character(AI , soldier);
+  AI.army[1].push(AICharacter);
+  addCharacterOnGui(AI , AICharacter);
+  
+  
+  //4 bersekers
+  
+  AICharacter = new Character(AI , berseker);
+  AI.army[1].push(AICharacter);
+  addCharacterOnGui(AI , AICharacter);
+  
+  AICharacter = new Character(AI , berseker);
+  AI.army[1].push(AICharacter);
+  addCharacterOnGui(AI , AICharacter);
+  
+  AICharacter = new Character(AI , berseker);
+  AI.army[1].push(AICharacter);
+  addCharacterOnGui(AI , AICharacter);
+  
+  AICharacter = new Character(AI , berseker);
+  AI.army[1].push(AICharacter);
+  addCharacterOnGui(AI , AICharacter);
+  
+  
+  
+  
 
 
 }
@@ -572,8 +507,19 @@ moveCharacter(druid, blackPortal){
 
 
 
-//send
 
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

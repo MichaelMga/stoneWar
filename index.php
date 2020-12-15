@@ -28,9 +28,13 @@
              <button style='position:absolute; top: 50%; left: 55%; z-index: 4' onclick='build(human, new Character(human, berseker) )'>Build bersekers</button>
              <button style='position:absolute; top: 50%; left: 60%; z-index: 4' onclick='build(human, new Character(human, knight) )'>Build knights</button>
 
+
+             <button style='position:absolute; top: 50%; left: 80%; z-index: 4' onclick='checkForArmySuperiority()'>check for army superiority</button>
+
+
       </div>
 
-    
+
 
 
       <div id='land_div2'>

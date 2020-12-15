@@ -1,21 +1,23 @@
-var titan = { index: 0, name:'titan'};
-var knight = { index: 3, name:'knight'};
-var soldier = { index: 2, name:'soldier'};
-var berseker = { index: 1, name:'berseker'};
-var druid  = { index: 4, name:'druid'};
+var titan = { index: 0, name:'titan', recipe: [{element: redStone , number: 50} , {element: blueStone, number: 50 }, {element: blackStone , number: 10 } ] };
+var berseker = { index: 1, name:'berseker' , recipe: [{element: redStone , number: 7} , {element: blueStone, number: 3 }, {element: blackStone , number: 0 } ]  };
+var soldier = { index: 2, name:'soldier', recipe : [{element: redStone , number: 5} , {element: blueStone, number: 5 }, {element: blackStone , number: 0 } ] };
+var knight = { index: 3, name:'knight', recipe: [{element: redStone , number: 2} , {element: blueStone, number: 8 }, {element: blackStone , number: 0 } ] };
+var druid  = { index: 4, name:'druid', recipe: none};
 
 var charactersArray = [titan, knight , soldier, berseker , druid];
+
+var predatorsArray = [titan, berseker, knight, soldier, druid];
 
 
 
 function Player(name){
     this.name = name;
     this.castle = new Castle();
-    this.army = [ [] , [] , [] , [] , [] , []];
+    this.army = [ [] , [] , [] , [] , []];
     this.druidKillers = [];
     this.buildingQueue = [];
-    this.charactersCount = [ 0 , 0 , 0 , 0 , 0 , 0 ];
-    this.stones = [ 100, 100 , 100];
+    this.charactersCount = [ 0 , 0 , 0 , 0 , 0 ];
+    this.stones = [ 0, 0 , 0];
   
 }
 
@@ -96,6 +98,5 @@ function Castle(){
 
 var human = new Player('human');
 var AI = new Player('AI');
-
 
 

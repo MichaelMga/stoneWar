@@ -11,7 +11,7 @@
  
 
 
-  function launchDruidAssault(){
+ function launchDruidAssault(){
 
     let character;
 
@@ -170,13 +170,157 @@ function deadCharacter(character){
     if(found == false){
 
       console.log('probleme lors de la suppression d un joueur...le joueur na pas été trouvé');
-
+    
     }
-
-
-
-
   }
+}
+
+
+
+
+function launchWarDeclarationCheck(){
+
+
+      //every 30 s , the AI compares the army
+
+      if(checkForArmySuperiority() == true){
+
+        //sort all the elements using merge sort, according to their  position
+
+        //then, once it's done : create a queue, adding elements one by one. Then, add the destruction army
+
+        //And, send the whole intuitive army at the back.
+
+        //add the castle assault army at the back
+
+
+        sortDestructionArmy();
+
+
+        for(i=0; i < intuitiveArmy.length; i++){
+
+           destructionArmy.push(intuitiveArmy[i]);
+
+        }
+
+
+      };
+
+
+      setInterval(function(){
+
+
+      });
+
+
+}
+
+
+function checkForArmySuperiority(){
+
+   //evaluate opponent's weaknesses
+
+   //create a copy of the AI army (used to remove elements to which an opponent was already asigned inside the current army)
+
+  
+   let superiorArmy = true;
+        
+
+       for(i=0; i < (human.army.length - 1); i++){
+
+              if(AI.army[predatorsArray[i].index].length < human.army[i].length){
+
+                      //we need to launch the production of a new predator
+
+                      build(AI, predatorsArray[i]);
+
+                      superiorArmy = false;
+
+
+              } else {
+
+                  //add each of the characters of that array into our array
+
+                   
+                  for(charIndex = 0 ; charIndex < AI.army[predatorsArray[i].index].length; charIndex++){
+                    
+                       destructionArmy[predatorsArray[i].index].push(AI.army[predatorsArray[i].index][i]);
+
+                  }
+
+              }
+        
+            //check for the predator of the other character
+  
+       }
+
+
+       if(superiorArmy == false){
+
+        //init the destruction army
+
+        alert('you are not strong enough');
+
+        destructionArmy = [ [ ] , [ ] , [ ] ,  [ ], [ ]];
+       }
+
+
+       alert("here is the size of your destruction army sections");
+
+       for(i=0; i < destructionArmy.length ; i++){
+          
+        alert(destructionArmy[i].length);
+
+       }
+
+
+
+    return superiorArmy;
+
+}
+
+
+
+
+function sortDestructionArmy(){
+
+
+    //loop on the whole 
+
+
+
+}
+
+
+
+
+function postKillReflection(){
+
+
+     //if there is an unbusy opponent :
+
+     //we'll use a hash for it. Anytime an opponent is unbusy, the opponent will hash in. AnyTime an opponent won't be busy, this opponent will hash out.
+
+
+     //So, we'll know that if the innactiveOpponentsAtWar.hash == 0 , then there are no inactive opponents, then we attack the castle.
+
+
+     //if( inactiveOpponentsAtWar
+       //if this is 
+
+
+       //if we're at war, any new player is in the unbusy array, and all the players not in an attacking interval
+              
+       
+}
+
+
+function opponentApparitionDuringSiege(){
+
+    //we'll loop on all the characters either attacking the castle, or unbusy (in the same array), and if we find a predator, go for it, else : equal player : attack
+
+    //else, keep attacking the castle 
+
 
 
 

@@ -1,0 +1,165 @@
+
+ /*
+ 
+    We have now an optimal array. Lets simply attack players
+
+
+    So, now : 
+
+ */
+
+
+
+
+
+ function getConfigScore(config){
+        
+
+       //For each opposition, compute the damage given (knowing that the maximum damage given is the lifePoints of an opponent) 
+
+
+       //Best way to do it?
+
+       //Brute force => Loop through each element, and compute the damage given for each. 
+
+       //Issue? Possibility of many duplicates.
+
+       //Solution => hashing (If the hash is already in the dictionarry, compute the value)
+
+
+
+       //FIRST, CHECK IF THIS CONFIG WAS ALREADY SEEN (MEANING, WE KNOW THE VALUE OF THE SCORE)
+
+
+
+       //We calculate (if needed, all the battles hashes), some were already computed, others didn't.
+
+       //Then, if there is a score for the current hash , we can just return the score.
+
+
+
+
+
+       var configHash = calculateConfigHash(config);
+
+       var configScore = probeConfigDictionnary(configHash);
+
+      
+      if (configScore != undefined){
+
+        return score;
+
+      } else {
+
+
+          //compute the damage score
+
+        var damageGivenPerSec = 0;
+
+
+
+          for(i=0; i < config.length; i++){
+
+          //WHEN INITIALLY HASHING THE CONFIG ARRAY (when running this function ), WE KNOW THAT ALL THE BATTLES ARRAYS WHERE ALREADY COMPUTED AND STORED INTO THE DICTIONNARY)
+
+             var battle = config[i];
+
+             var hash = hash(battle);
+
+
+            //meaning, the hash is stored
+
+
+                 //return the attack
+
+
+                 damageGivenPerSec += damageDictionnary[hash];
+
+      }
+
+
+      
+
+
+          return damageGivenPerSec;
+
+
+       }
+
+      
+
+
+  return [damageGivenPerSec];
+
+ }
+    
+
+
+
+ function hash(battle){
+
+   //Transform this array into a bit value
+
+    var hash = 0;
+    hash ^= battle[0];
+    hash ^= battle[1];
+
+
+   return hash % MAXENTRIES;
+
+ }
+
+
+
+
+ function calculateDamageGiven(attacker, victim){
+
+   
+    var damage = attacker.attack;
+
+  
+     if(attacker.prey == victim){
+
+       damage *= 2;
+     }
+
+
+      return damage;
+  
+   }
+
+
+ }
+
+
+
+
+
+ var probeConfigDictionnary(hash){
+
+
+     return configScoreDictionnary[hash % MAXENTRIES];
+ 
+ }
+
+
+
+
+
+ function calculateConfigScore(config){
+       
+    var configHash = 0;
+
+      for(i=0; i < config.length ; i++){
+
+        var battle = config[i]
+
+
+        configHash ^= hash(battle);
+
+      }
+
+    
+      return configHash;
+
+ }
